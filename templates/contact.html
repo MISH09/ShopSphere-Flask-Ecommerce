@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block title %}Contact | ShopSphere{% endblock %}
+{% block content %}
+<section class="contact-layout section-shell"><div class="contact-copy"><p class="eyebrow">SAY HELLO</p><h1>We're all <em>ears.</em></h1><p>Questions, feedback, or a suggestion for something we should stock? Send a note using the form.</p><div class="contact-note"><span>✳</span><div><strong>Good conversations start small.</strong><p>This demo form displays a confirmation message and does not send email.</p></div></div></div><form method="post" class="checkout-form contact-form"><label>Your name<input name="name" required placeholder="Your name"></label><label>Email address<input type="email" name="email" required placeholder="you@example.com"></label><label>What's on your mind?<textarea name="message" rows="5" required placeholder="Write your message..."></textarea></label><button class="button button-dark full-button" type="submit">Send your note <span>→</span></button></form></section>
+{% endblock %}

@@ -1,0 +1,8 @@
+<article class="product-card">
+  <a class="product-visual {{ product.color }}" href="{{ url_for('product_detail', product_id=product.id) }}">
+    {% if product.id in [2,5] %}<span class="product-badge">POPULAR</span>{% elif product.id == 1 %}<span class="product-badge sale-badge">BESTSELLER</span>{% endif %}
+    <span class="product-emoji">{{ product.emoji }}</span><span class="quick-view">View item ↗</span>
+  </a>
+  <div class="product-info"><div><p class="product-category">{{ product.category }}</p><a href="{{ url_for('product_detail', product_id=product.id) }}" class="product-name">{{ product.name }}</a></div><div class="product-price"><strong>₹{{ "{:,}".format(product.price) }}</strong><del>₹{{ "{:,}".format(product.old_price) }}</del></div></div>
+  <form action="{{ url_for('add_to_cart', product_id=product.id) }}" method="post"><button class="add-button" type="submit">Add to bag <span>+</span></button></form>
+</article>

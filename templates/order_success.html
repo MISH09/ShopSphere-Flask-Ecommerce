@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block title %}Order placed | ShopSphere{% endblock %}
+{% block content %}
+<section class="success-page section-shell"><div class="success-icon">✓</div><p class="eyebrow">THAT'S A WRAP</p><h1>Thanks, {{ name.split(' ')[0] }}.<br><em>Your order is in.</em></h1><p class="success-description">Your demo order <strong>#{{ order_id }}</strong> has been recorded. This is a learning project, so no payment or physical delivery has been initiated.</p><div class="success-total"><span>Order total</span><strong>₹{{ "{:,}".format(total + (0 if total >= 2999 else 99)) }}</strong></div><a class="button button-dark" href="{{ url_for('products') }}">Back to shopping <span>→</span></a></section>
+{% endblock %}

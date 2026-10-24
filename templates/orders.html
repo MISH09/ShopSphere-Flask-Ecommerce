@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}Your orders | ShopSphere{% endblock %}
+{% block content %}
+<section class="section-shell cart-page"><div class="page-title-row"><div><p class="eyebrow">YOUR SHOPPING STORY</p><h1>Your <em>orders.</em></h1></div><a class="link-arrow" href="{{ url_for('products') }}">Shop more →</a></div>
+{% if orders %}<div class="orders-list">{% for order in orders %}<article class="order-card"><div class="order-card-head"><div><small>ORDER #{{ order.id }}</small><h2>{{ order.created_at }}</h2></div><strong>₹{{ "{:,}".format(order.total + (0 if order.total >= 2999 else 99)) }}</strong></div><p>{{ order.items }}</p><div class="order-address"><strong>Delivering to</strong><br>{{ order.customer_name }} · {{ order.address }}</div></article>{% endfor %}</div>{% else %}<div class="empty-state"><span>□</span><h2>No orders yet.</h2><p>Your first good find is waiting to happen.</p><a class="button button-dark" href="{{ url_for('products') }}">Start exploring</a></div>{% endif %}
+</section>
+{% endblock %}

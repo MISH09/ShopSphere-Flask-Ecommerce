@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Shop all products | ShopSphere{% endblock %}
+{% block content %}
+<section class="page-hero section-shell compact-hero"><p class="eyebrow">THE SHOP</p><h1>Find something <em>lovely.</em></h1><p>Useful things, thoughtful details, and new favourites waiting to be found.</p></section>
+<section class="section-shell shop-section">
+  <form class="filter-bar" method="get" action="{{ url_for('products') }}">
+    <div class="filter-search"><span>⌕</span><input name="q" value="{{ query }}" placeholder="What are you looking for?" aria-label="Search products"></div>
+    <select name="category" aria-label="Filter by category"><option value="">All categories</option>{% for category in categories %}<option value="{{ category }}" {% if selected_category == category %}selected{% endif %}>{{ category }}</option>{% endfor %}</select>
+    <select name="sort" aria-label="Sort products"><option value="featured" {% if sort == 'featured' %}selected{% endif %}>Featured</option><option value="price-low" {% if sort == 'price-low' %}selected{% endif %}>Price: low to high</option><option value="price-high" {% if sort == 'price-high' %}selected{% endif %}>Price: high to low</option><option value="name" {% if sort == 'name' %}selected{% endif %}>Name A–Z</option></select>
+    <button class="button button-dark filter-submit" type="submit">Apply</button>
+  </form>
+  <div class="results-line"><span>{{ products|length }} product{% if products|length != 1 %}s{% endif %} to explore</span>{% if query or selected_category %}<a href="{{ url_for('products') }}">Clear filters ×</a>{% endif %}</div>
+  {% if products %}<div class="product-grid">{% for product in products %}{% include "_product_card.html" %}{% endfor %}</div>{% else %}<div class="empty-state"><span>⌕</span><h2>No matches just yet.</h2><p>Try a different search or browse the full collection.</p><a class="button button-dark" href="{{ url_for('products') }}">See all products</a></div>{% endif %}
+</section>
+{% endblock %}

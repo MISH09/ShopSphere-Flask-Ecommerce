@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}ShopSphere — Good things for everyday{% endblock %}
+{% block content %}
+<section class="hero section-shell">
+  <div class="hero-copy">
+    <p class="eyebrow"><span class="eyebrow-line"></span> THE EVERYDAY EDIT</p>
+    <h1>Find your next<br><em>favourite thing.</em></h1>
+    <p class="hero-description">Thoughtful essentials, little luxuries, and everyday pieces that make life feel a bit more you.</p>
+    <div class="hero-buttons"><a class="button button-dark" href="{{ url_for('products') }}">Shop the collection <span>↗</span></a><a class="link-arrow" href="{{ url_for('about') }}">Get to know us <span>→</span></a></div>
+    <div class="hero-note"><div class="avatar-stack"><span>✦</span><span>✿</span><span>♡</span></div><span><strong>Made for real life.</strong><br>Picked with care, every time.</span></div>
+  </div>
+  <div class="hero-art">
+    <div class="art-sticker">THE<br>GOOD<br>STUFF <span>✳</span></div>
+    <div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div>
+    <div class="hero-product hero-product-one"><span>🎧</span><small>LISTEN IN</small></div>
+    <div class="hero-product hero-product-two"><span>☕</span><small>SLOW MORNINGS</small></div>
+    <div class="hero-product hero-product-three"><span>👟</span><small>GO YOUR WAY</small></div>
+    <div class="art-caption">A considered collection<br>for your everyday.</div>
+    <div class="sparkle sparkle-one">✳</div><div class="sparkle sparkle-two">✦</div><div class="sparkle sparkle-three">✧</div>
+  </div>
+</section>
+<section class="benefits-strip"><div><span>✳</span> Thoughtfully selected</div><div><span>↗</span> Easy, secure shopping</div><div><span>♡</span> Little things, big joy</div><div><span>□</span> Simple returns</div></section>
+<section class="section-shell category-section">
+  <div class="section-heading"><div><p class="eyebrow">A GOOD PLACE TO START</p><h2>Shop by <em>mood.</em></h2></div><a class="link-arrow" href="{{ url_for('products') }}">View everything →</a></div>
+  <div class="category-grid">
+    {% for category, icon, desc, tone in [('Fashion','◈','Pieces to take you places','peach'),('Electronics','⌁','Everyday tech, made simple','lavender'),('Home','⌂','Make yourself at home','sage'),('Beauty','✳','Small rituals, lovely results','cream')] %}
+    <a class="category-card {{ tone }}" href="{{ url_for('products', category=category) }}"><span class="category-icon">{{ icon }}</span><span class="category-name">{{ category }}</span><span class="category-desc">{{ desc }}</span><span class="category-arrow">↗</span></a>
+    {% endfor %}
+  </div>
+</section>
+<section class="section-shell featured-section">
+  <div class="section-heading"><div><p class="eyebrow">THE CROWD PLEASERS</p><h2>Good picks. <em>Great finds.</em></h2></div><a class="link-arrow" href="{{ url_for('products') }}">Shop all products →</a></div>
+  <div class="product-grid">
+    {% for product in products %}{% include "_product_card.html" %}{% endfor %}
+  </div>
+</section>
+<section class="story-banner section-shell"><div class="story-symbol">s.</div><div><p class="eyebrow">LESS SCROLLING, MORE LOVING</p><h2>Good things should<br>feel <em>easy.</em></h2><p>We bring together useful, lovely, and well-considered finds so you can spend less time searching and more time enjoying.</p><a class="button button-light" href="{{ url_for('about') }}">A little about us <span>↗</span></a></div><div class="story-decoration">✳</div></section>
+{% endblock %}

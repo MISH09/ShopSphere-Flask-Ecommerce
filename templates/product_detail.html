@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}{{ product.name }} | ShopSphere{% endblock %}
+{% block content %}
+<section class="section-shell detail-layout">
+  <div class="detail-visual {{ product.color }}"><span class="detail-emoji">{{ product.emoji }}</span><span class="detail-art-note">A GOOD FIND ✳</span></div>
+  <div class="detail-copy"><p class="eyebrow">{{ product.category|upper }} / THE EVERYDAY EDIT</p><h1>{{ product.name }}</h1><div class="detail-price"><strong>₹{{ "{:,}".format(product.price) }}</strong><del>₹{{ "{:,}".format(product.old_price) }}</del><span>Save ₹{{ "{:,}".format(product.old_price - product.price) }}</span></div><p class="detail-description">{{ product.description }}</p><div class="detail-perks"><p><span>✓</span> Thoughtfully selected</p><p><span>✓</span> Secure demo checkout</p><p><span>✓</span> Easy-to-love everyday design</p></div><form action="{{ url_for('add_to_cart', product_id=product.id) }}" method="post" class="detail-form"><label for="quantity">Quantity</label><input id="quantity" name="quantity" type="number" min="1" max="10" value="1"><button class="button button-dark" type="submit">Add to bag <span>↗</span></button></form><a class="back-link" href="{{ url_for('products') }}">← Back to all products</a></div>
+</section>
+{% endblock %}

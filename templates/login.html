@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block title %}Sign in | ShopSphere{% endblock %}
+{% block content %}
+<section class="auth-page section-shell"><div class="auth-art lavender"><span>♡</span><p>Good to see<br>you again.</p><small>YOUR FAVOURITES ARE WAITING</small></div><div class="auth-panel"><p class="eyebrow">WELCOME BACK</p><h1>Sign <em>in.</em></h1><p class="auth-intro">Pick up right where you left off.</p><form method="post" class="stacked-form"><label>Email address<input type="email" name="email" required autocomplete="email" placeholder="you@example.com"></label><label>Password<input type="password" name="password" required autocomplete="current-password" placeholder="Your password"></label><button class="button button-dark full-button" type="submit">Sign in <span>→</span></button></form><p class="auth-switch">New around here? <a href="{{ url_for('register') }}">Create an account</a></p></div></section>
+{% endblock %}

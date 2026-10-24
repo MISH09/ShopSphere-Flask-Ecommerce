@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ShopSphere — thoughtful finds for everyday life.">
+  <title>{% block title %}ShopSphere{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script defer src="{{ url_for('static', filename='js/script.js') }}"></script>
+</head>
+<body>
+  <div class="announcement">A little something for your everyday <span>—</span> free shipping over ₹2,999</div>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="{{ url_for('home') }}"><span class="brand-mark">s.</span> shopsphere</a>
+      <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <nav class="main-nav" id="main-nav">
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('products') }}">Shop</a>
+        <a href="{{ url_for('about') }}">Our story</a>
+        <a href="{{ url_for('contact') }}">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <form class="nav-search" action="{{ url_for('products') }}" method="get">
+          <span aria-hidden="true">⌕</span><input name="q" placeholder="Search products" aria-label="Search products">
+        </form>
+        {% if current_user %}
+          <a class="account-link" href="{{ url_for('orders') }}">Hi, {{ current_user.name.split(' ')[0] }}</a>
+          <form action="{{ url_for('logout') }}" method="post" class="inline-form"><button class="text-button" type="submit">Log out</button></form>
+        {% else %}
+          <a class="account-link" href="{{ url_for('login') }}">Sign in</a>
+        {% endif %}
+        <a class="cart-link" href="{{ url_for('cart') }}" aria-label="Shopping cart">Bag <span>{{ cart_count }}</span></a>
+      </div>
+    </div>
+  </header>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="flash-wrap">
+        {% for category, message in messages %}<div class="flash {{ category }}">{{ message }}<button type="button" class="flash-close" aria-label="Dismiss message">×</button></div>{% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+  <main>{% block content %}{% endblock %}</main>
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div><a class="brand footer-brand" href="{{ url_for('home') }}"><span class="brand-mark">s.</span> shopsphere</a><p>Good things for the way you live.</p></div>
+      <div><h4>Explore</h4><a href="{{ url_for('products') }}">All products</a><a href="{{ url_for('about') }}">Our story</a></div>
+      <div><h4>Help</h4><a href="{{ url_for('contact') }}">Contact us</a><a href="{{ url_for('orders') }}">Your orders</a></div>
+      <div><h4>Stay in the loop</h4><p>New finds, thoughtful essentials, and little updates.</p><form class="newsletter" onsubmit="event.preventDefault(); alert('Thanks for your interest!');"><input type="email" required placeholder="Your email address" aria-label="Your email address"><button aria-label="Subscribe">→</button></form></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 ShopSphere. Demo storefront.</span><span>Made for everyday living.</span></div>
+  </footer>
+</body>
+</html>
