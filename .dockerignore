@@ -1,0 +1,13 @@
+```text
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+.git/
+.env
+*.db
+*.sqlite
+*.sqlite3
+.vscode/
+```
