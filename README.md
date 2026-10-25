@@ -30,3 +30,5 @@ The SQLite database is created automatically the first time the app runs.
 - This is a learning/demo project. Checkout records an order but does not charge a payment method.
 - Before deployment, set a strong secret key using an environment variable, disable debug mode, add CSRF protection and production-grade configuration, and validate any payment integration.
 - Product images are illustrated with emoji-style product tiles to keep the project self-contained and runnable offline.
+
+- CI/CD automatic deployment test
