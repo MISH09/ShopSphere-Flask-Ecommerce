@@ -32,3 +32,4 @@ The SQLite database is created automatically the first time the app runs.
 - Product images are illustrated with emoji-style product tiles to keep the project self-contained and runnable offline.
 
 - CI/CD automatic deployment test 2
+- CI?CD TESTING 3
